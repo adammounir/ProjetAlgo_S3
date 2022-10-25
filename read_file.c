@@ -5,7 +5,7 @@
 #include <string.h>
 
 
-void readDictionnaire(int size, p_dictionnaire dict[size])
+/*void readDictionnaire(p_lineFile dict[dictionnaireSize])
 {   //OUVRE LE FICHIER 
     FILE *fic = fopen ("/mnt/c/EFREI/ProjetAlgo_S3/dictionnaires_de_mots/dictionnaire.txt","r");
 
@@ -13,12 +13,14 @@ void readDictionnaire(int size, p_dictionnaire dict[size])
     if(fic == NULL)
         exit(1);
 
-    for(int i=0; i<size; i++)
+    //PARCOURS DU TABLEAU LIGNE PAR LIGNE
+    for(int i=0; i<dictionnaireSize; i++)
     {
-    //CREATION D'UN ELEMENT DE LA STRUCTURE lineFile
-        p_lineFile l;
+        //CREATION D'UNE LIGNE DU TABLEAU
+        p_lineFile l = malloc(sizeof(p_lineFile));
         int cpt = 0;
 
+        //REMPLISSAGE DE LA LIGNE DU TABLEAU
         for(int lettre ; lettre != '\n'; lettre = fgetc(fic))
         {
             if((char)lettre == '\t')
@@ -27,14 +29,17 @@ void readDictionnaire(int size, p_dictionnaire dict[size])
                 continue;
             }
             if(cpt ==0)
-                strncat(l->flechie, (char*)&lettre, 1);
+                strncat(l->flechie, (char*)&lettre, sizeof(l->flechie) - strlen(l->flechie) - 1);
             if(cpt ==1)
-                strncat(l->base, (char*)&lettre, 1);
+                strncat(l->base, (char*)&lettre,sizeof(l->flechie) - strlen(l->flechie) - 1);
             if(cpt ==2)
-                strncat(l->infos, (char*)&lettre, 1);
+                strncat(l->infos, (char*)&lettre,sizeof(l->flechie) - strlen(l->flechie) - 1);
         }
-        (dict->lineFileList)[i] = l;
+
+        //ASSIGNATION DE LA LIGNE DU TABLEAU AU DICTIONNAIRE
+        dict[i] = l;
+        //FERMETURE DU FICHIER SI SA LECTURE EST FINIE
         if(feof(fic))
             break;
     }
-}
+}*/

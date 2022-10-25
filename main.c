@@ -4,7 +4,7 @@
 
 void displayString(char* s)
 {
-    for(int i=0 ;s[i]!=0; s++)
+    for(int i=0 ;s[i]!=0; i++)
     {
         printf("%c",s[i]);
     }
@@ -12,15 +12,14 @@ void displayString(char* s)
 
 int main()
 {
-    p_dictionnaire dict[dictionnaireSize];
 
-    readDictionnaire(dictionnaireSize,dict);
+    //readDictionnaire(dictionnaire);
 
     for(int i =0; i<dictionnaireSize; i++)
     {
-        displayString((dict->lineFileList[i])->flechie);
-        displayString((dict->lineFileList[i])->base);
-        displayString((dict->lineFileList[i])->infos);
+        displayString((dictionnaire[i])->flechie);
+        displayString((dictionnaire[i])->base);
+        displayString((dictionnaire[i])->infos);
         printf("\n");
     }
     return 0;

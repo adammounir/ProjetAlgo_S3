@@ -11,13 +11,11 @@ typedef struct s_lineFile
 
 #define dictionnaireSize 287976
 
-typedef struct s_dictionnaire
-{
-    p_lineFile lineFileList[dictionnaireSize];
-}t_dictionnaire,*p_dictionnaire;
+p_lineFile dictionnaire[dictionnaireSize];
+p_lineFile dictionnaire_non_accentue[dictionnaireSize];
 
 
-void readDictionnaire(int size, p_dictionnaire dict[size]);
+void readDictionnaire(p_lineFile dict[dictionnaireSize]);
 
 
 #endif 
