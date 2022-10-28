@@ -1,6 +1,7 @@
 #include "struct.h"
 #include <stddef.h>
 #include <stdio.h>
+#include <string.h>
 
 void displayString(char* s)
 {
@@ -12,15 +13,8 @@ void displayString(char* s)
 
 int main()
 {
-
-    //readDictionnaire(dictionnaire);
-
-    for(int i =0; i<dictionnaireSize; i++)
-    {
-        displayString((dictionnaire[i])->flechie);
-        displayString((dictionnaire[i])->base);
-        displayString((dictionnaire[i])->infos);
-        printf("\n");
-    }
+    p_lineFile dict[dictionnaireSize];
+    readDictionnaire(dict);
+    freeDictionnaire(dict, dictionnaireSize);
     return 0;
 }
