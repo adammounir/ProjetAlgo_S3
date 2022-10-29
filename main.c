@@ -16,5 +16,6 @@ int main()
     p_lineFile dict[dictionnaireSize];
     readDictionnaire(dict);
     freeDictionnaire(dict, dictionnaireSize);
+    
     return 0;
 }
