@@ -1,5 +1,6 @@
-#include "struct.h"
-#include <stddef.h>
+#include "read_file.h"
+#include "buildtree.h"
+#include "verbs_buildtree.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -13,9 +14,9 @@ void displayString(char* s)
 
 int main()
 {
-    p_lineFile dict[dictionnaireSize];
-    readDictionnaire(dict);
+    verbsParsing(dict, infosTab); 
     freeDictionnaire(dict, dictionnaireSize);
-    
+    printInfosTab(infosTab);
+    freeInfosTab(infosTab);
     return 0;
 }
