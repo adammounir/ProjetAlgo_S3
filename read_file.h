@@ -1,65 +1,56 @@
-#include <stddef.h>
+#ifndef READ_FILE_H
+#define READ_FILE_H
+#define FILE_SIZE 287976
+#include <stdio.h>
 
+/*------------------------LECTURE DU DICTIONNAIRE----------------------------*/
 
-#ifndef FILE_READING
-
-/*---------------------------------------------------------------------LECTURE DU DICTIONNAIRE------------------------------------------------------------------------------------------*/
-//STRUCTURE CONTENANT LES CHAMPS D'UNE SEULE MODIFICATION
+// STRUCTURE CONTENANT LES CHAMPS D'UNE SEULE MODIFICATION
 typedef struct s_modification
 {
-    char *first;
-    char *second;
-    char *third;
-}t_modification , *p_modification;
+    size_t fieldCount;
+    char **fieldArray;
+} t_modification, *p_modification;
 
-
-//STRUCTURE CONTENANT LES CHAMPS DE L'ENSEMBLE DES INFOS D'UNE LIGNE
-typedef struct s_infos
+// STRUCTURE CONTENANT LES CHAMPS DE L'ENSEMBLE DES INFOS D'UNE LIGNE
+typedef struct s_info
 {
-    char *categorie;
-    p_modification *modificationsTab;
-    int modificationsCount;
-}t_infos , *p_infos;
+    char *category;
+    size_t modificationsCount;
+    p_modification *modificationsArray;
+} t_info, *p_info;
 
-
-//STRUCTURE CONTENANT LES CHAMPS D'UNE LIGNE DU DICTIONNAIRE
-typedef struct s_lineFile
+// STRUCTURE CONTENANT LES CHAMPS D'UNE LIGNE DU DICTIONNAIRE
+typedef struct s_line
 {
-    char flechie[80];
-    char base[80];
-    char infos[80];
-}t_lineFile,*p_lineFile;
+    char *lineStart;
+    char *flechie;
+    char *base;
+    char *real;
+    char *suffix;
+    p_info info;
+} t_line, *p_line;
 
-
-//TAILLES DES DIFFERENTS DICTIONNAIRES
-#define dictionnaireSize 287976
-#define miniDictionnaireSize 10
-
-
-//DEFINITION DES DICTIONNAIRES
-p_lineFile dictionnaire_non_accentue[dictionnaireSize];
-p_lineFile mini_dictionnaire[miniDictionnaireSize];
-p_lineFile dict[dictionnaireSize];
-
-p_infos infosTab[dictionnaireSize];
-
-//DECLARATION DES FONCTIONS DE LECTURE DE DICTIONNAIRE
-
-void readDictionnaire(p_lineFile *dict);
-void freeDictionnaire(p_lineFile *dict, size_t size);
-
-void verbsParsing(p_lineFile *dict, p_infos *infosTab);
-void printInfosTab(p_infos *infosTab);
-void freeInfosTab(p_infos *infosTab);
-
-//DEFINITION DE LA STRUCTURE CONTENTANT LES INFOS DE CHAQUE LIGNE DU DICO
-/*typedef struct s_infos
+typedef struct s_dict
 {
-    category[4]
-    char *modifications;
-}*/
+    size_t lineCount;
+    p_line *lineArray;
+} t_dict, *p_dict;
 
-#endif 
+p_dict createDict(char *path);
+p_line createLine(char *lineStart);
+p_info createInfo(char *infoStart);
+p_modification createModification(char *modificationStart);
+char *createField(char *fieldStart);
 
+void freeDict(p_dict dict);
+void freeLine(p_line line);
+void freeInfo(p_info info);
+void freeModification(p_modification modification);
 
+void printDict(p_dict dict);
+void printLine(p_line line);
+void printInfo(p_info info);
+void printModification(p_modification modification);
 
+#endif
