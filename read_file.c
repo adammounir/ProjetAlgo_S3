@@ -28,13 +28,13 @@ p_dict createDict(char *path)
 
         // Shrink the line so that strtok_r won't read garbage.
         lineFile[n_read - 1] = 0;
-        printf("%s\n", lineFile);
+        // printf("%s\n", lineFile);
         p_line line = createLine(lineFile);
         if (!line)
             continue;
         dict->lineArray[dict->lineCount] = line;
         dict->lineCount++;
-        printf("%li\n", dict->lineCount);
+        // printf("%li\n", dict->lineCount);
     }
 
     free(lineFile);
@@ -83,9 +83,9 @@ p_line createLine(char *lineStart)
     strcpy(real, flechie);
     real[lenReal] = 0;
 
-    printf("flechie: %s, base: %s\n", flechie, base);
-    printf("real : %s, suffix %s \n", real, suffix);
-    getchar();
+    // printf("flechie: %s, base: %s\n", flechie, base);
+    // printf("real : %s, suffix %s \n", real, suffix);
+    // getchar();
 
     token = strtok_r(NULL, "\t", &save);
     if (!token)
