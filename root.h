@@ -7,7 +7,7 @@
 typedef struct s_flechies
 {
     size_t flechieCount;
-    char *flechieArray;
+    char **flechieArray;
 } t_flechies, *p_flechies;
 
 typedef struct s_persons
@@ -41,6 +41,7 @@ void freeFlechies(p_flechies flechie);
 void freeStruct();
 
 p_root createRoot(p_dict dict);
-void fillVerb(p_root root, p_info info, char *flechie);
+void fillVerb(p_genders verb, p_info info, char *flechie);
+void fill(p_genders gender, p_info info, char *flechie);
 
 #endif

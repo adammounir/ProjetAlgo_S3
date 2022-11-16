@@ -87,7 +87,7 @@ p_root createRoot(p_dict dict)
         int isNom = strcmp(categorie, "Nom") == 0;
         int isAdj = strcmp(categorie, "Adj") == 0;
         if (isVer)
-            fillVerb(root, info, line->flechie);
+            fillVerb(root->verb, info, line->flechie);
         else if (isNom)
             fill(root->noun, info, line->flechie);
         else if (isAdj)
@@ -126,7 +126,7 @@ void fill(p_genders gender, p_info info, char *flechie)
         }
 
         int isSG = strcmp(personne, "SG") == 0 || strcmp(genre, "InvPL") == 0;
-        int isPL = strcmp(personne, "SG") == 0;
+        int isPL = strcmp(personne, "PL") == 0;
 
         p_flechies flechies;
         if (isSG)
@@ -142,10 +142,11 @@ void fill(p_genders gender, p_info info, char *flechie)
         // getchar();
         flechies->flechieArray[flechies->flechieCount] = flechie;
         flechies->flechieCount++;
+        // printf("%li\n", flechies->flechieCount);
     }
 }
 
-void fillVerb(p_root root, p_info info, char *flechie)
+void fillVerb(p_genders verb, p_info info, char *flechie)
 {
     p_modification *modifArray = info->modificationsArray;
     size_t modifCount = info->modificationsCount;
@@ -171,12 +172,12 @@ void fillVerb(p_root root, p_info info, char *flechie)
         if (isSingular)
         {
             // printf("found singular \n");
-            flechies = root->noun->male->singular;
+            flechies = verb->male->singular;
         }
         else if (isPlural)
         {
             // printf("found plural \n");
-            flechies = root->noun->male->plural;
+            flechies = verb->male->plural;
         }
         else
             return;
