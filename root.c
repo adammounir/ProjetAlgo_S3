@@ -168,22 +168,29 @@ void fillVerb(p_genders verb, p_info info, char *flechie)
         }
         int isSingular = strcmp(nombre, "SG") == 0;
         int isPlural = strcmp(nombre, "PL") == 0;
-        p_flechies flechies;
+        p_flechies flechies1;
+        p_flechies flechies2;
         if (isSingular)
         {
             // printf("found singular \n");
-            flechies = verb->male->singular;
+            flechies1 = verb->male->singular;
+            flechies2 = verb->female->singular;
         }
         else if (isPlural)
         {
             // printf("found plural \n");
-            flechies = verb->male->plural;
+
+            flechies1 = verb->male->plural;
+            flechies2 = verb->female->plural;
         }
         else
             return;
 
         // getchar();
-        flechies->flechieArray[flechies->flechieCount] = flechie;
-        flechies->flechieCount++;
+        flechies1->flechieArray[flechies1->flechieCount] = flechie;
+        flechies1->flechieCount++;
+
+        flechies2->flechieArray[flechies2->flechieCount] = flechie;
+        flechies2->flechieCount++;
     }
 }

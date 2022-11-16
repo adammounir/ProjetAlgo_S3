@@ -14,9 +14,6 @@ int main()
     p_dict dict = createDict(path);
     p_root root = createRoot(dict);
 
-    int a;
-    while(scanf("%d",&a))
-
     printSentence(root);
 
     freeRoot(root);
