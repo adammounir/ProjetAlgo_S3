@@ -21,3 +21,11 @@ Dépôt :
 * réfléchir à la structure de données de stockage des entrées
 * déboggage des seg fault : trouver un moyen d'isoler la partie du code qui conduit au seg fault
 * réfléchir à comment récupérer les mots du dictionnaire sans les stocker statiquement dans un tableau
+
+# Séance du 16/11/2022
+
+## À faire:
+* Implémenter le bon arbre
+* Si vous décider de rester sur votre implémentation, bien expliquer le choix dans le rapport
+* Rédiger le rapport
+* Correction des bugs (problèmes de free et abort)
